@@ -1,27 +1,28 @@
-/* resources/css/app.css */
+ /* styles.css */
 
-.navbar {
+ .navbar {
     background-color: #0077b6 !important; 
     position: fixed; 
     width: 100%; 
     top: 0; 
     z-index: 9999;
   }
-  
+ 
   .navbar-brand,
   .navbar-nav {
     color: white !important; 
   }
-  
+      
+  /* hero-image, czyli "zdjęcie w tle" */
   .hero-image {
-    background-image: url("img/hero-image-2.jpg");
+    background-image: url('{{ asset('img/hero-image-2.jpg') }}');
     background-size: cover;
     background-position: center;
     height: 500px; 
-    opacity: 0.9;
+    opacity: 0.9; /*przezroczystość */
     position: relative;
   }
-  
+    
   .hero-text {
     position: absolute;
     top: 50%;
@@ -31,7 +32,7 @@
     text-align: center;
     font-weight: bold;
   }
-  
+ 
   .footer {
     background-color: #343a40;
     color: white;
@@ -41,4 +42,4 @@
     width: 100%;
     z-index: 9999;
   }
-  
+ 
