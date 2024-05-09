@@ -12,14 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('hills', function (Blueprint $table) {
-            $table->id();
+            $table->id('hill_id');
             $table->string('name', 100)->unique();
             $table->string('country', 50);
             $table->string('city', 50);
             $table->integer('build_year')->nullable();
             $table->integer('hill_size');
             $table->float('record')->nullable();
-            $table->string('record_holder')->nullable();
+            $table->bigInteger('record_holder_id')->unsigned()->nullable();
+            $table->foreign('record_holder_id')->references('record_holder_id')->on('record_holders');
             $table->timestamps();
         });
     }
