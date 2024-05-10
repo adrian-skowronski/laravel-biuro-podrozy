@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('trips', function (Blueprint $table) {
-            $table->id('trip_id');
+            $table->id('trip_id')->primary();
             $table->date('start');
             $table->date('end');
             $table->double('price');
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('status');
             $table->bigInteger('coordinator_id')->unsigned();
             $table->foreign('coordinator_id')->references('coordinator_id')->on('coordinators');
-            $table->timestamps();
+            $table->string('photo');
         });
     }
 

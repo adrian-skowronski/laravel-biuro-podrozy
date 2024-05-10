@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('hills', function (Blueprint $table) {
-            $table->id('hill_id');
+            $table->id('hill_id')->primary();
             $table->string('name', 100)->unique();
             $table->string('country', 50);
             $table->string('city', 50);
@@ -21,7 +21,6 @@ return new class extends Migration
             $table->float('record')->nullable();
             $table->bigInteger('record_holder_id')->unsigned()->nullable();
             $table->foreign('record_holder_id')->references('record_holder_id')->on('record_holders');
-            $table->timestamps();
         });
     }
 

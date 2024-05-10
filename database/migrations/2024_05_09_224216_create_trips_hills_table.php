@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('trips_hills', function (Blueprint $table) {
             $table->unsignedBigInteger('trip_id');
             $table->unsignedBigInteger('hill_id');
-            $table->timestamps();
             $table->foreign('trip_id')->references('trip_id')->on('trips')->onDelete('restrict');
             $table->foreign('hill_id')->references('hill_id')->on('hills')->onDelete('restrict');
 
