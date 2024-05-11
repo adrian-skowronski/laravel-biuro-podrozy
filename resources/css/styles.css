@@ -15,7 +15,7 @@
       
   /* hero-image, czyli "zdjęcie w tle" */
   .hero-image {
-    background-image: url('{{ asset('img/hero-image-2.jpg') }}');
+    background-image: url('public/img/hero-image-2.jpg');
     background-size: cover;
     background-position: center;
     height: 500px; 

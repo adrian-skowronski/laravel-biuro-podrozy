@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HillController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -10,3 +11,7 @@ Route::get('/', function () {
 Route::get('/oferty', function () {
     return view('oferty');
 })->name('oferty');
+
+
+
+Route::get('/hills', [HillController::class, 'index']);
