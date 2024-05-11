@@ -16,6 +16,9 @@ class TripsController extends Controller
         return view('trips.index', ['trips' => $trips]);
     }
 
+   
+
+    
     /**
      * Show the form for creating a new resource.
      */

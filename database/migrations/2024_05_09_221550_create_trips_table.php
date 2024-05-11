@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->id('trip_id')->primary();
+            $table->string('title')->unique();
             $table->date('start');
             $table->date('end');
             $table->double('price');

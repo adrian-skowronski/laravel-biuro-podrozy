@@ -14,6 +14,7 @@ class TripsSeeder extends Seeder
     {
        
         Trip::firstOrCreate([
+            'title'=>'Pakiet polski',
             'start'=>'2024-05-20',
             'end'=>'2024-05-22',
             'price'=>1090,

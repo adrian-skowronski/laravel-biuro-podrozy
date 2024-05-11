@@ -2,11 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TripsController;
+use App\Http\Controllers\StartController;
 
-
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/',[StartController::class,'index']);
 
 
 Route::get('/oferty', function () {
@@ -14,3 +12,4 @@ Route::get('/oferty', function () {
 })->name('oferty');
 
 Route::resource('trips', TripsController::class);
+Route::resource('start', StartController::class);

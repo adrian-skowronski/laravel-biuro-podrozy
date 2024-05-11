@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nasza oferta</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Dodaj inne linki do stylów tutaj, jeśli są potrzebne -->
-</head>
+@include('shared.html')
+@include('shared.head', ['pageTitle' => 'Oferta'])
+
 <body>
 
+  @include('shared.navbar')
   <section id="oferta">
     <div class="container">
       <h1>Nasza oferta</h1>
@@ -16,10 +11,15 @@
         @foreach($trips as $trip)
           <div class="col">
             <div class="card h-100">
-              <img src="{{ $trip->photo }}" class="card-img-top" alt="{{ $trip->description }}">
+              <img src="{{ asset('photo/'.$trip->photo) }}" class="card-img-top" alt="{{ $trip->description }}">
               <div class="card-body">
-                <h5 class="card-title">{{ $trip->description }}</h5>
+                <h5 class="card-title">{{ $trip->title }}</h5>
+                <p class="card-text">{{ $trip->description }}</p>
+                <p class="card-text">Zwiedzane skocznie:</p>
                 <p class="card-text">Data: {{ $trip->start }} - {{ $trip->end }}</p>
+                <p class="card-text">Koordynator:</p>
+                <p class="card-text">Uczestników: aktualnie {{ $trip->current_participants }} na {{ $trip->max_participants }} miejsc</p>
+                <p class="card-text">Cena: {{ $trip->price }} PLN/os. </p>
               </div>
             </div>
           </div>
@@ -28,5 +28,6 @@
     </div>
   </section>
 
+  @include('shared.footer')
 </body>
 </html>
