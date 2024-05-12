@@ -2,10 +2,10 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TripsController;
+use App\Http\Controllers\StartController;
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/',[StartController::class,'index']);
 
 
 Route::get('/oferty', function () {
