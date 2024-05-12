@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Customer;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -31,19 +31,27 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'surname' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:255'],
+            'balance' => ['required', 'numeric'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:customers'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+        
 
-        $user = User::create([
+        $customer = Customer::create([
             'name' => $request->name,
+            'surname' => $request->surname,
+            'phone' => $request->phone,
+            'balance' => $request->balance,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        
 
-        event(new Registered($user));
+        event(new Registered($customer));
 
-        Auth::login($user);
+        Auth::login($customer);
 
         return redirect(route('dashboard', absolute: false));
     }
