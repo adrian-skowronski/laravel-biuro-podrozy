@@ -13,6 +13,8 @@ class Hill extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'hill_id';
+
     protected $fillable = ['name', 'country', 'city', 'build_year', 'hill_size', 'record', 'record_holder_id'];
     public $timestamps = false;
 

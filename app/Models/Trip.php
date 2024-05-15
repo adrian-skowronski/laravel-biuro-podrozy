@@ -13,6 +13,7 @@ class Trip extends Model
 {
     use HasFactory;
     
+    protected $primaryKey = 'trip_id';
 
     protected $fillable = ['title', 'start', 'end', 'price', 'description', 'max_participants',
                             'current_participants', 'coordinator_id', 'status', 'photo'];

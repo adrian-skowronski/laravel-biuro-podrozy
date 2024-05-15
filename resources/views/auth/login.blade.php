@@ -1,3 +1,8 @@
+@include('shared.html')
+@include('shared.head', ['pageTitle' => 'Logowanie'])
+
+@include('shared.navbar')
+
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -44,4 +49,9 @@
             </x-primary-button>
         </div>
     </form>
+
+  
+
 </x-guest-layout>
+
+@include('shared.footer')

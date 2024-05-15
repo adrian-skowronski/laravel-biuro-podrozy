@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Coordinator extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'coordinator_id';
 
     protected $fillable = ['name', 'surname'];
     public $timestamps = false;

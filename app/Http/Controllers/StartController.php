@@ -12,4 +12,10 @@ class StartController extends Controller
         $trips = Trip::all();
         return view('start.index', ['trips' => $trips]);
     }
+
+    public function oferty()
+    {
+        $trips = Trip::all();
+        return view('start.oferty', ['trips' => $trips]);
+    }
 }

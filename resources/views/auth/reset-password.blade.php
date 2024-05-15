@@ -1,3 +1,8 @@
+@include('shared.html')
+@include('shared.head', ['pageTitle' => 'Reset hasła'])
+
+@include('shared.navbar')
+
 <x-guest-layout>
     <form method="POST" action="{{ route('password.store') }}">
         @csrf
@@ -37,3 +42,5 @@
         </div>
     </form>
 </x-guest-layout>
+
+@include('shared.footer')

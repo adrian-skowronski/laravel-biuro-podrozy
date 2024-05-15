@@ -13,6 +13,8 @@ class Trip_Hill extends Model
 
     protected $table = 'trips_hills';
 
+    protected $primaryKey = 'trip_hill_id';
+
     protected $fillable = ['trip_id', 'hill_id'];
     public $timestamps = false;
 }

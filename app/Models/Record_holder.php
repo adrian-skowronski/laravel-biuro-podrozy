@@ -11,6 +11,8 @@ class Record_holder extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'record_holder_id';
+
     protected $fillable = ['name', 'surname', 'country'];
     public $timestamps = false;
 

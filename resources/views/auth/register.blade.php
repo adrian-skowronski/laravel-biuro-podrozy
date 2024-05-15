@@ -1,3 +1,8 @@
+@include('shared.html')
+@include('shared.head', ['pageTitle' => 'Rejestracja'])
+
+@include('shared.navbar')
+
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
@@ -61,3 +66,5 @@
         </div>
     </form>
 </x-guest-layout>
+
+@include('shared.footer')

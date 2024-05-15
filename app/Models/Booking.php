@@ -11,6 +11,8 @@ class Booking extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'booking_id';
+
     protected $fillable = ['customer_id', 'date', 'status', 'trip_id', 'participants'];
     public $timestamps = false;
 

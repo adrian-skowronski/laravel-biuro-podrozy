@@ -15,7 +15,6 @@ class TripsController extends Controller
         $trips = Trip::all();
         return view('trips.index', ['trips' => $trips]);
     }
-
    
 
     
@@ -24,7 +23,8 @@ class TripsController extends Controller
      */
     public function create()
     {
-        //
+        return view('trips.create');
+
     }
 
     /**
@@ -32,7 +32,22 @@ class TripsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'start' => 'required|date',
+            'end' => 'required|date|after_or_equal:start',
+            'price' => 'required|numeric',
+            'description' => 'required',
+            'max_participants' => 'required|numeric',
+            'current_participants' => 'required|numeric|lte:max_participants',
+            'status' => 'required|in:aktualna,archiwalna',
+            'coordinator_id' => 'required|numeric',
+            'photo' => 'required',
+        ]);
+
+        Trip::create($validatedData);
+
+        return redirect()->route('trips.index');
     }
 
     /**
@@ -48,7 +63,10 @@ class TripsController extends Controller
      */
     public function edit(Trip $trip)
     {
-        //
+        
+        $trip = Trip::find($trip->trip_id);
+
+        return view('trips.edit', ['trip'=>$trip]);
     }
 
     /**
@@ -56,7 +74,22 @@ class TripsController extends Controller
      */
     public function update(Request $request, Trip $trip)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'start' => 'required|date',
+            'end' => 'required|date|after_or_equal:start',
+            'price' => 'required|numeric',
+            'description' => 'required',
+            'max_participants' => 'required|numeric',
+            'current_participants' => 'required|numeric|lte:max_participants',
+            'status' => 'required|in:aktualna,archiwalna',
+            'coordinator_id' => 'required|numeric',
+            'photo' => 'required',
+        ]);
+    
+        $trip->update($validatedData); 
+    
+        return redirect()->route('trips.index');
     }
 
     /**
@@ -64,6 +97,7 @@ class TripsController extends Controller
      */
     public function destroy(Trip $trip)
     {
-        //
+        $trip->delete();
+        return redirect()->route('trips.index'); 
     }
 }
