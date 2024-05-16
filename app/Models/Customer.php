@@ -50,5 +50,18 @@ class Customer extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function isAdmin() : bool {
+        // $admin_role = Cache::rememberForever('admin_role', function () {
+        //     return DB::table('roles')->where('name', 'admin')->value('id');
+        // });
+
+        //return $this->role_id == $admin_role;
+
+        return $this->role_id == 1;
+    }
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'customer_id');
+    }
     
 }

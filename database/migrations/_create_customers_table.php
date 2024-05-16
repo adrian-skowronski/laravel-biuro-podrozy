@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id('customer_id')->primary();
-            $table->string('name',40);
-            $table->string('surname',40);
+            $table->string('name', 40);
+            $table->string('surname', 40);
             $table->string('password');
-            $table->string('phone',9);
+            $table->string('phone', 9);
             $table->string('email')->unique();
-            $table->decimal('balance',10,2);
+            $table->decimal('balance', 10, 2);
+            $table->unsignedBigInteger('role_id')->default(2); // assuming 2 is the default role for customers
             $table->rememberToken();
             $table->timestamps();
         });
@@ -49,3 +50,5 @@ return new class extends Migration
         Schema::dropIfExists('sessions');
     }
 };
+
+
