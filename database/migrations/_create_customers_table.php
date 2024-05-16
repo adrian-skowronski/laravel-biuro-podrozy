@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('phone', 9);
             $table->string('email')->unique();
             $table->decimal('balance', 10, 2);
-            $table->unsignedBigInteger('role_id')->default(2); // assuming 2 is the default role for customers
+            $table->unsignedBigInteger('role_id')->default(2); // 2 is for customers
             $table->rememberToken();
             $table->timestamps();
         });

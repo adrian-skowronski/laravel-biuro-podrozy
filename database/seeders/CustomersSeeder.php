@@ -18,7 +18,7 @@ class CustomersSeeder extends Seeder
             'balance' => 1000,
             'email' => 'admin@example.com',
             'password' => Hash::make('password'),
-            'role_id' => 1 // assuming 1 is the admin role id
+            'role_id' => 1 // 1 is for admin, 2 for customers
         ]);
     }
 }
