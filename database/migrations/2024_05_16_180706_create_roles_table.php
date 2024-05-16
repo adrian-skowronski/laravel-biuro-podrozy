@@ -17,7 +17,7 @@ return new class extends Migration
             $table->timestamps();
         });
     
-        // Optionally, you can add a default admin role
+    
         DB::table('roles')->insert([
             ['name' => 'admin'],
             ['name' => 'customer']
