@@ -12,6 +12,8 @@ use App\Http\Controllers\HillsController;
 use App\Http\Controllers\RecordHoldersController;
 use App\Http\Controllers\StartController;
 use App\Http\Controllers\TripsHillsController;
+use App\Http\Middleware\AdminMiddleware;
+
 
 
 
@@ -45,6 +47,11 @@ require __DIR__.'/auth.php';
 Route::get('/admin', function () {
     return view('admin.index');
 })->name('admin');
+
+Route::middleware([AdminMiddleware::class])->group(function () {
+    Route::get('/admin', function () {
+        return view('admin.index');
+    })->name('admin');
 
 Route::get('/admin/{table}', function ($table) {
     // Sprawdź, czy tabela istnieje

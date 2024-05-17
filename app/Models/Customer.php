@@ -50,5 +50,13 @@ class Customer extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function isAdmin()
+    {
+        return $this->role_id === 1;
+    }
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'customer_id');
+    }
     
 }
