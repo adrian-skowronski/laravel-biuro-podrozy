@@ -54,9 +54,9 @@ class TripsController extends Controller
      * Display the specified resource.
      */
     public function show(Trip $trip)
-    {
-        //
-    }
+{
+    return view('trips.show', compact('trip'));
+}
 
     /**
      * Show the form for editing the specified resource.

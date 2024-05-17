@@ -1,9 +1,10 @@
 @include('shared.html')
 @include('shared.head', ['pageTitle' => 'Blog - wpisy'])
-
+@include('shared.navbar')
+<br><br><br>
 <div class="container">
     <h1>Wpisy na blogu</h1>
-    <br><br>
+    <br>
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -26,9 +27,9 @@
                     @endif
                         <p class="card-text">Utworzono: {{ $post->created_at }}</p>
                         {{-- Sprawdź, czy istnieje użytkownik --}}
-                        @if($post->customer)
+                        @if($post->customers)
                             {{-- Wyświetl imię i nazwisko użytkownika --}}
-                            <p class="mt-3"><strong>Autor:</strong> {{ $post->customer->name }} {{ $post->customer->surname }}</p>
+                            <p class="mt-3"><strong>Autor:</strong> {{ $post->customers->name }} {{ $post->customers->surname }}</p>
                         @else
                             {{-- Jeśli nie ma użytkownika, wyświetl "Nieznany" --}}
                             <p class="mt-3"><strong>Autor:</strong> Nieznany</p>

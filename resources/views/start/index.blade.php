@@ -86,6 +86,8 @@
                         <h5 class="card-title">{{ $trip->title }}</h5>
                         <p class="card-text">{{ $trip->description }}</p>
                         <p class="card-text">Data: {{ $trip->start }} - {{ $trip->end }}</p>
+                        <a href="{{ route('trips.show', $trip->trip_id) }}" class="btn btn-primary">Szczegóły</a>
+
                     </div>
                 </div>
             </div>

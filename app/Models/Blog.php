@@ -15,9 +15,9 @@ class Blog extends Model
 
     protected $fillable = ['title', 'description', 'photo', 'customer_id'];
 
-    public function customer()
+    public function customers()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Customer::class, 'customer_id');
     }
 }
 

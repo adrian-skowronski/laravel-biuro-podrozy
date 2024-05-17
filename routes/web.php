@@ -63,6 +63,7 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 });
 
 Route::post('/submit-query', [QueryController::class, 'store'])->name('queries.store');
+Route::get('/trips/{trip}', [TripsController::class, 'show'])->name('trips.show');
 
 
 use App\Http\Controllers\BlogController;

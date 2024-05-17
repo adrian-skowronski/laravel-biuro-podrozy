@@ -22,8 +22,9 @@ class Trip extends Model
     
     public function hills()
     {
-        return $this->belongsToMany(Hill::class, 'trip_hills', 'trip_id', 'hill_id');
+        return $this->belongsToMany(Hill::class, 'trips_hills', 'trip_id', 'hill_id');
     }
+    
 
     public function coordinators()
     {
