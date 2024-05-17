@@ -18,24 +18,26 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#blog">Wasze opowieści</a>
                 </li>
-                <li class="nav-item">
                 @auth
-        <!-- Jeśli użytkownik jest zalogowany -->
-        <li class="nav-item">
-            <form action="{{ route('logout') }}" method="post">
-                @csrf
-                <button type="submit" class="btn btn-link nav-link">Wyloguj się</button>
-            </form>
-        </li>
-    @else
-        <!-- Jeśli użytkownik nie jest zalogowany -->
-        <li class="nav-item">
-            <a class="btn btn-link nav-link" href="{{ route('login') }}">Zaloguj się</a>
-        </li>
-        <li class="nav-item">
-            <a class="btn btn-link nav-link" href="{{ route('register') }}">Zarejestruj się</a>
-        </li>
-    @endauth
+                    @if(auth()->user()->isAdmin())
+                        <li class="nav-item">
+                            <a class="btn btn-link nav-link" href="{{ route('admin') }}">Admin</a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-link nav-link">Wyloguj się</button>
+                        </form>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="btn btn-link nav-link" href="{{ route('login') }}">Zaloguj się</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-link nav-link" href="{{ route('register') }}">Zarejestruj się</a>
+                    </li>
+                @endauth
             </ul>
         </div>
     </div>

@@ -11,6 +11,7 @@ use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\HillsController;
 use App\Http\Controllers\RecordHoldersController;
 use App\Http\Controllers\StartController;
+use App\Http\Middleware\AdminMiddleware;
 
 
 Route::get('/', [StartController::class, 'index'])->name('start.index');
@@ -43,13 +44,19 @@ Route::get('/admin', function () {
     return view('admin.index');
 })->name('admin');
 
-Route::get('/admin/{table}', function ($table) {
-    // Sprawdź, czy tabela istnieje
-    if (Schema::hasTable($table)) {
-        // Jeśli tabela istnieje, przekieruj do odpowiedniego kontrolera
-        return redirect()->route($table . '.index');
-    } else {
-        // Jeśli tabela nie istnieje, przekieruj gdzieś indziej lub zwróć błąd 404
-        abort(404);
-    }
-})->name('admin.table');
+Route::middleware([AdminMiddleware::class])->group(function () {
+    Route::get('/admin', function () {
+        return view('admin.index');
+    })->name('admin');
+
+    Route::get('/admin/{table}', function ($table) {
+        // Sprawdź, czy tabela istnieje
+        if (Schema::hasTable($table)) {
+            // Jeśli tabela istnieje, przekieruj do odpowiedniego kontrolera
+            return redirect()->route($table . '.index');
+        } else {
+            // Jeśli tabela nie istnieje, przekieruj gdzieś indziej lub zwróć błąd 404
+            abort(404);
+        }
+    })->name('admin.table');
+});
