@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
 class Trip_Hill extends Model
@@ -17,4 +17,14 @@ class Trip_Hill extends Model
 
     protected $fillable = ['trip_id', 'hill_id'];
     public $timestamps = false;
+
+    public function trip()
+    {
+        return $this->belongsTo(Trip::class, 'trip_id');
+    }
+
+    public function hill()
+    {
+        return $this->belongsTo(Hill::class, 'hill_id');
+    }
 }

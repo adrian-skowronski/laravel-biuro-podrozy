@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('trips_hills', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('trip_id');
             $table->unsignedBigInteger('hill_id');
             $table->foreign('trip_id')->references('trip_id')->on('trips')->onDelete('restrict');
