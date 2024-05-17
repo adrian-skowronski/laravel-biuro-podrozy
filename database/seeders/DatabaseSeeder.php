@@ -13,9 +13,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-        $this->call(CustomersSeeder::class);
-
+        $this->call([
+            Record_HoldersSeeder::class,
+            HillsSeeder::class,
+            CoordinatorsSeeder::class,
+            TripsSeeder::class,
+            Trips_HillsSeeder::class,
+            CustomersSeeder::class,
+            BookingsSeeder::class,
+            
+        ]);
+        
         
     }
 }
