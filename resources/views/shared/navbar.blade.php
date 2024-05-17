@@ -1,3 +1,18 @@
+<style>
+    .navbar {
+      background-color: #0077b6 !important; 
+      position: fixed; 
+      width: 100%; 
+      top: 0; 
+      z-index: 9999;
+    }
+
+    .navbar-brand,
+    .navbar-nav {
+      color: white !important; 
+    }
+    </style>
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="start"><b>Skocz w podróż!</b></a>
