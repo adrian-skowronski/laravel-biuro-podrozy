@@ -12,6 +12,7 @@ use App\Http\Controllers\HillsController;
 use App\Http\Controllers\RecordHoldersController;
 use App\Http\Controllers\StartController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\QueryController;
 
 
 Route::get('/', [StartController::class, 'index'])->name('start.index');
@@ -60,3 +61,12 @@ Route::middleware([AdminMiddleware::class])->group(function () {
         }
     })->name('admin.table');
 });
+
+Route::post('/submit-query', [QueryController::class, 'store'])->name('queries.store');
+
+
+use App\Http\Controllers\BlogController;
+
+Route::get('blog/create', [BlogController::class, 'create'])->name('blog.create');
+Route::post('blog', [BlogController::class, 'store'])->name('blog.store');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
