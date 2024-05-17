@@ -76,7 +76,6 @@ class HillsController extends Controller
         'hill_size' => 'required|numeric',
         'record' => 'required',
         'record_holder_id' => 'required|numeric',
-        'photo' => 'required',
     ]);
 
     $hill->update($validatedData); 

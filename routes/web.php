@@ -11,6 +11,8 @@ use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\HillsController;
 use App\Http\Controllers\RecordHoldersController;
 use App\Http\Controllers\StartController;
+use App\Http\Controllers\TripsHillsController;
+
 
 
 Route::get('/', [StartController::class, 'index'])->name('start.index');
@@ -34,6 +36,7 @@ Route::resource('coordinators', CoordinatorsController::class);
 Route::resource('customers', CustomersController::class);
 Route::resource('hills', HillsController::class);
 Route::resource('record_holders', RecordHoldersController::class);
+Route::resource('trips_hills', TripsHillsController::class);
 
 
 Route::resource('start', StartController::class);
@@ -53,3 +56,6 @@ Route::get('/admin/{table}', function ($table) {
         abort(404);
     }
 })->name('admin.table');
+
+Route::get('/hills/{hill}/edit', [HillsController::class, 'edit'])->name('hills.edit');
+Route::get('trips_hills/{trip_hills}/edit', [TripsHillsController::class, 'edit'])->name('trips_hills.edit');
