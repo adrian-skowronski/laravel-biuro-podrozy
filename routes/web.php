@@ -30,22 +30,21 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('trips', TripsController::class);
-Route::resource('bookings', BookingsController::class);
-Route::resource('coordinators', CoordinatorsController::class);
-Route::resource('customers', CustomersController::class);
-Route::resource('hills', HillsController::class);
-Route::resource('record_holders', RecordHoldersController::class);
 
 
 Route::resource('start', StartController::class);
 require __DIR__.'/auth.php';
 
-Route::get('/admin', function () {
-    return view('admin.index');
-})->name('admin');
 
-Route::middleware([AdminMiddleware::class])->group(function () {
+
+Route::middleware(['auth', AdminMiddleware::class])->group(function () {
+    Route::resource('trips', TripsController::class);
+    Route::resource('bookings', BookingsController::class);
+    Route::resource('coordinators', CoordinatorsController::class);
+    Route::resource('customers', CustomersController::class);
+    Route::resource('hills', HillsController::class);
+    Route::resource('record_holders', RecordHoldersController::class);
+
     Route::get('/admin', function () {
         return view('admin.index');
     })->name('admin');
@@ -68,6 +67,11 @@ Route::get('/trips/{trip}', [TripsController::class, 'show'])->name('trips.show'
 
 use App\Http\Controllers\BlogController;
 
-Route::get('blog/create', [BlogController::class, 'create'])->name('blog.create');
-Route::post('blog', [BlogController::class, 'store'])->name('blog.store');
+Route::middleware('auth')->group(function () {
+    Route::get('blog/create', [BlogController::class, 'create'])->name('blog.create');
+    Route::post('blog', [BlogController::class, 'store'])->name('blog.store');
+});
+
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::post('/submit-query', [QueryController::class, 'store'])->name('queries.store');
+Route::get('/trips/{trip}', [TripsController::class, 'show'])->name('trips.show');

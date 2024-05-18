@@ -10,11 +10,11 @@
             {{ session('success') }}
         </div>
     @endif
-
+    @auth
     <div class="mb-3">
         <a href="{{ route('blog.create') }}" class="btn btn-primary">Dodaj nowy wpis</a>
     </div>
-
+    @endauth
     <div class="row">
         @foreach($posts as $post)
             <div class="col-md-4">
