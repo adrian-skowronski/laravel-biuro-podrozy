@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('blog_posts', function (Blueprint $table) {
             $table->id();
+            table->id('customer_id');
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->string('title');
             $table->text('description');
