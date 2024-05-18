@@ -86,6 +86,8 @@
                         <h5 class="card-title">{{ $trip->title }}</h5>
                         <p class="card-text">{{ $trip->description }}</p>
                         <p class="card-text">Data: {{ $trip->start }} - {{ $trip->end }}</p>
+                        <a href="{{ route('trips.show', $trip->trip_id) }}" class="btn btn-primary">Szczegóły</a>
+
                     </div>
                 </div>
             </div>
@@ -116,26 +118,17 @@
 
   <br><br>
 
-  <!-- Sekcja: Blog -->
-  <section id="blog">
-    <div class="container">
-      <h1>Wasze opowieści</h1>
-      <h4>Najnowszy wpis na blogu:</h4>
-      <div class="container">
-        <!-- Przykładowy wpis na stronie głównej -->
-        <div class="post mb-4">
-          <img src="post1.jpg" class="img-fluid" alt="Post 1">
-          <div class="post-content mt-2">
-            <h3 class="post-header">Nagłówek wpisu 1</h3>
-            <p class="post-info">Data stworzenia: 01-01-2024</p>
-            <p>Treść wpisu 1...</p>
-            <p>Autor: login_autora_1</p>
-          </div>
-        </div>
+  
+ <!-- Sekcja: Blog -->
+ @include('shared.blog')
+ 
+
+
+
     
         <!-- Przycisk "Przejdź na blog" -->
         <div class="text-center">
-          <a href="podstrona.html" class="btn btn-primary">Przejdź na blog</a>
+          <a href="{{ route('blog.index') }}" class="btn btn-primary">Przejdź na blog</a>
         </div>
          </div>
     
@@ -156,7 +149,7 @@
         <div class="col-md-6 offset-md-3 text-center">
           <h1 class="mt-5 text-white">Skaczemy!</h1>
           <p class="lead text-white">Zaloguj się i bądź na bieżąco z naszą ofertą</p>
-          <a href="login.html" class="btn btn-primary btn-lg">Przejdź do logowania</a>
+          <a href="{{ route('login') }}" class="btn btn-primary btn-lg">Przejdź do logowania</a>
           <p></p>
           <p></p>
         </div>

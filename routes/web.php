@@ -12,6 +12,7 @@ use App\Http\Controllers\HillsController;
 use App\Http\Controllers\RecordHoldersController;
 use App\Http\Controllers\StartController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\QueryController;
 
 
 Route::get('/', [StartController::class, 'index'])->name('start.index');
@@ -29,12 +30,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::resource('trips', TripsController::class);
-Route::resource('bookings', BookingsController::class);
-Route::resource('coordinators', CoordinatorsController::class);
-Route::resource('customers', CustomersController::class);
-Route::resource('hills', HillsController::class);
-Route::resource('record_holders', RecordHoldersController::class);
 
 
 Route::resource('start', StartController::class);
@@ -66,4 +61,17 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     })->name('admin.table');
 });
 
-require __DIR__.'/auth.php';
+Route::post('/submit-query', [QueryController::class, 'store'])->name('queries.store');
+Route::get('/trips/{trip}', [TripsController::class, 'show'])->name('trips.show');
+
+
+use App\Http\Controllers\BlogController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('blog/create', [BlogController::class, 'create'])->name('blog.create');
+    Route::post('blog', [BlogController::class, 'store'])->name('blog.store');
+});
+
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::post('/submit-query', [QueryController::class, 'store'])->name('queries.store');
+Route::get('/trips/{trip}', [TripsController::class, 'show'])->name('trips.show');
