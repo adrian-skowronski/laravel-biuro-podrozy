@@ -51,8 +51,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::resource('trips_hills', TripsHillsController::class);
     Route::resource('blog_posts', BlogController::class);
 
-    // dla admina dostęp do blogu
-    //Route::get('blog/admin', [BlogController::class, 'adminIndex'])->name('blog.admin.index');
+    
 
     Route::get('/admin', function () {
         return view('admin.index');
@@ -85,6 +84,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/klient/add_money', [CustomerPanelController::class, 'addMoneySubmit'])->name('customer.add_money.submit');
 
 });
+
+
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::post('/submit-query', [QueryController::class, 'store'])->name('queries.store');
