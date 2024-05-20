@@ -1,65 +1,47 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Models;
 
-use App\Models\Customer;
-use Illuminate\Http\Request;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+//use Illuminate\Foundation\Auth\Customer as Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class CustomersController extends Controller
+class Customer extends Authenticatable
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    use HasFactory, Notifiable;
+
+    protected $primaryKey = 'customer_id';
+    protected $fillable = [
+        'name',
+        'surname',
+        'phone',
+        'email',
+        'password',
+        'code', 
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected function casts(): array
     {
-        //
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function isAdmin()
     {
-        //
+        return $this->role_id === 1;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function bookings()
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Customer $customer)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Customer $customer)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Customer $customer)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Customer $customer)
-    {
-        //
+        return $this->hasMany(Booking::class, 'customer_id');
     }
 }

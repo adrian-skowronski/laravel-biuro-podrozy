@@ -33,7 +33,12 @@
 </div>
 <br>
 <div class="container text-center">
+    <a href="{{ route('trips.book', $trip) }}" class="btn btn-secondary mt-3">Zarezerwuj wycieczkę!</a>
+</div>
+
+<div class="container text-center">
     <a href="{{ route('start.oferty') }}" class="btn btn-secondary mt-3">Wróć do listy wycieczek</a>
 </div>
+
 <br>
 @include('shared.footer')

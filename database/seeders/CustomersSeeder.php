@@ -15,10 +15,11 @@ class CustomersSeeder extends Seeder
             'name' => 'Admin',
             'surname' => 'User',
             'phone' => '123456789',
-            'balance' => 1000,
-            'email' => 'admin2@example.com',
+            'code' => '1234',
+            'email' => 'admin@example.com',
             'password' => Hash::make('password'),
             'role_id' => 1 // 1 is for admin, 2 for customers
-        ]);
+        ]
+    );
     }
 }

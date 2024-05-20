@@ -6,7 +6,7 @@
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
-
+        <br>
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Imię')" />
@@ -34,11 +34,12 @@
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
-        <!-- Balance -->
+
+        <!-- Code -->
         <div class="mt-4">
-            <x-input-label for="balance" :value="__('balance')" />
-            <x-text-input id="balance" class="block mt-1 w-full" type="text" name="balance" :value="old('balance')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('balance')" class="mt-2" />
+            <x-input-label for="code" :value="__('Kod')" />
+            <x-text-input id="code" class="block mt-1 w-full" type="text" name="code" :value="old('code')" required autocomplete="code" />
+            <x-input-error :messages="$errors->get('code')" class="mt-2" />
         </div>
 
         <!-- Password -->
@@ -66,5 +67,5 @@
         </div>
     </form>
 </x-guest-layout>
-
+<br>
 @include('shared.footer')

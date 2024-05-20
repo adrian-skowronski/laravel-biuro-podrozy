@@ -13,6 +13,8 @@ use App\Http\Controllers\RecordHoldersController;
 use App\Http\Controllers\StartController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\QueryController;
+use App\Http\Controllers\CustomerPanelController;
+
 
 
 Route::get('/', [StartController::class, 'index'])->name('start.index');
@@ -49,6 +51,8 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
         return view('admin.index');
     })->name('admin');
 
+   
+
     Route::get('/admin/{table}', function ($table) {
         // Sprawdź, czy tabela istnieje
         if (Schema::hasTable($table)) {
@@ -70,8 +74,15 @@ use App\Http\Controllers\BlogController;
 Route::middleware('auth')->group(function () {
     Route::get('blog/create', [BlogController::class, 'create'])->name('blog.create');
     Route::post('blog', [BlogController::class, 'store'])->name('blog.store');
+    Route::get('/klient', [CustomerPanelController::class, 'index'])->name('customer');
+    Route::get('/klient/add_money', [CustomerPanelController::class, 'addMoney'])->name('customer.add_money');
+    Route::post('/klient/add_money', [CustomerPanelController::class, 'addMoneySubmit'])->name('customer.add_money.submit');
+
 });
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::post('/submit-query', [QueryController::class, 'store'])->name('queries.store');
 Route::get('/trips/{trip}', [TripsController::class, 'show'])->name('trips.show');
+
+Route::get('/trips/{trip}/book', [TripsController::class, 'book'])->name('trips.book');
+Route::post('/trips/{trip}/booking/submit', [BookingsController::class, 'store'])->name('trips.booking.submit');

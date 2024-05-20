@@ -58,6 +58,11 @@ class TripsController extends Controller
     return view('trips.show', compact('trip'));
 }
 
+public function book(Trip $trip)
+{
+    return view('trips.book', compact('trip'));
+}
+
     /**
      * Show the form for editing the specified resource.
      */

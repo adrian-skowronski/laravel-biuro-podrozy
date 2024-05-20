@@ -23,7 +23,7 @@ class Customer extends Authenticatable
         'name',
         'surname',
         'phone',
-        'balance',
+        'code',
         'email',
         'password',
 

@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone', 9);
             $table->string('email')->unique();
-            $table->decimal('balance', 10, 2);
+            $table->char('code', 4);
+            $table->decimal('balance', 10, 2)->default(0);
             $table->unsignedBigInteger('role_id')->default(2); // 2 is for customers
             $table->rememberToken();
             $table->timestamps();
