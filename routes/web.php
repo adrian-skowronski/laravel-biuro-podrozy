@@ -14,6 +14,8 @@ use App\Http\Controllers\StartController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\QueryController;
 use App\Http\Controllers\CustomerPanelController;
+use App\Http\Controllers\TripsHillsController;
+use App\Http\Controllers\BlogController;
 
 
 
@@ -46,6 +48,10 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::resource('customers', CustomersController::class);
     Route::resource('hills', HillsController::class);
     Route::resource('record_holders', RecordHoldersController::class);
+    Route::resource('trips_hills', TripsHillsController::class);
+    Route::resource('blog_posts', BlogController::class);
+
+    
 
     Route::get('/admin', function () {
         return view('admin.index');
@@ -69,7 +75,6 @@ Route::post('/submit-query', [QueryController::class, 'store'])->name('queries.s
 Route::get('/trips/{trip}', [TripsController::class, 'show'])->name('trips.show');
 
 
-use App\Http\Controllers\BlogController;
 
 Route::middleware('auth')->group(function () {
     Route::get('blog/create', [BlogController::class, 'create'])->name('blog.create');
@@ -79,6 +84,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/klient/add_money', [CustomerPanelController::class, 'addMoneySubmit'])->name('customer.add_money.submit');
 
 });
+
+
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::post('/submit-query', [QueryController::class, 'store'])->name('queries.store');
