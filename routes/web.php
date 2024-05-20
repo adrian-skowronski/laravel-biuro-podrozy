@@ -91,5 +91,6 @@ Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::post('/submit-query', [QueryController::class, 'store'])->name('queries.store');
 Route::get('/trips/{trip}', [TripsController::class, 'show'])->name('trips.show');
 
+
 Route::get('/trips/{trip}/book', [TripsController::class, 'book'])->name('trips.book');
 Route::post('/trips/{trip}/booking/submit', [BookingsController::class, 'store'])->name('trips.booking.submit');
