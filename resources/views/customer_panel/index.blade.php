@@ -80,6 +80,40 @@
                 </tbody>
             </table>
 
+            <div class="row mb-1">
+                <br><br>
+    <h1>Historia Rezerwacji</h1>
+</div>
+
+<div class="row">
+    @if ($bookings->isEmpty())
+        <p>Brak rezerwacji.</p>
+    @else
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Wycieczka</th>
+                    <th scope="col">Liczba uczestników</th>
+                    <th scope="col">Cena</th>
+                    <th scope="col">Data rezerwacji</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($bookings as $booking)
+                    <tr>
+                        <td>{{ $booking->booking_id }}</td>
+                        <td>{{ $booking->trip->title }}</td>
+                        <td>{{ $booking->participants }}</td>
+                        <td>{{ $booking->price }}</td>
+                        <td>{{ $booking->created_at }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    @endif
+</div>
+
             <div class="container mt-3">
                 <div class="row">
                     <div class="col text-center">

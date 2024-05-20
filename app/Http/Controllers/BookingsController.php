@@ -9,6 +9,14 @@ use Illuminate\Support\Facades\DB;
 
 class BookingsController extends Controller
 {
+    public function index()
+    {
+        $user = Auth::user();
+        $bookings = $user->customer->bookings;
+        dd($bookings);
+        return view('customer_panel.index', compact('bookings'));
+    }
+
     public function store(Request $request)
     {
         $participants = $request->input('participants');

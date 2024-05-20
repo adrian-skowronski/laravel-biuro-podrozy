@@ -10,7 +10,7 @@
             <h1>Lista wycieczek i skoczni</h1>
         </div>
         <div class="row mb-2">
-            <a href="{{ route('trips.create') }}">Dodaj nową wycieczkę</a>
+            <a href="{{ route('trips_hills.create') }}">Dodaj nowe połączenia</a>
         </div>
         <div class="row">
             <table class="table table-hover table-striped">
@@ -23,7 +23,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                <!-- W widoku trips_hills.index -->
 @forelse ($trips_hills as $trip_hill)
     <tr>
         <th scope="row">{{ $trip_hill->id }}</th>
