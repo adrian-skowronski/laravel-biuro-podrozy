@@ -12,7 +12,8 @@ class CoordinatorsController extends Controller
      */
     public function index()
     {
-        //
+        $coordinators = Coordinator::all();
+        return view('coordinators.index', ['coordinators' => $coordinators]);
     }
 
     /**
@@ -20,7 +21,7 @@ class CoordinatorsController extends Controller
      */
     public function create()
     {
-        //
+        return view('coordinators.create');
     }
 
     /**
@@ -28,7 +29,14 @@ class CoordinatorsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:40',
+            'surname' => 'required|string|max:40',
+        ]);
+
+        Coordinator::create($validatedData);
+
+        return redirect()->route('coordinators.index');
     }
 
     /**
@@ -36,7 +44,7 @@ class CoordinatorsController extends Controller
      */
     public function show(Coordinator $coordinator)
     {
-        //
+        return view('coordinators.show', ['coordinator' => $coordinator]);
     }
 
     /**
@@ -44,7 +52,7 @@ class CoordinatorsController extends Controller
      */
     public function edit(Coordinator $coordinator)
     {
-        //
+        return view('coordinators.edit', ['coordinator' => $coordinator]);
     }
 
     /**
@@ -52,7 +60,14 @@ class CoordinatorsController extends Controller
      */
     public function update(Request $request, Coordinator $coordinator)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:40',
+            'surname' => 'required|string|max:40',
+        ]);
+
+        $coordinator->update($validatedData);
+
+        return redirect()->route('coordinators.index');
     }
 
     /**
@@ -60,6 +75,7 @@ class CoordinatorsController extends Controller
      */
     public function destroy(Coordinator $coordinator)
     {
-        //
+        $coordinator->delete();
+        return redirect()->route('coordinators.index');
     }
 }

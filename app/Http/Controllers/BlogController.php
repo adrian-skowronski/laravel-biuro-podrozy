@@ -18,6 +18,11 @@ class BlogController extends Controller
     {
         return view('blog.create');
     }
+    public function adminIndex()
+    {
+        $posts = Blog::with('customers')->get();
+        return view('blog.admin_index', compact('posts'));
+    }
 
     public function store(Request $request)
     {
