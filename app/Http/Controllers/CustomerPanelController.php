@@ -7,16 +7,24 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\BookingsController;
 use App\Models\Booking;
 
+use App\Models\Sorted_Booking;
 
 class CustomerPanelController extends Controller
 {
     public function index()
-{
-    $user = Auth::user();
-    $bookings = Booking::where('customer_id', $user->customer_id)->get();
-
-    return view('customer_panel.index', ['bookings' => $bookings, 'customer' => $user]);
-}
+    {
+        $customer = Auth::user(); // Pobierz aktualnie zalogowanego użytkownika
+    
+        if (!$customer) {
+            return redirect()->route('home')->with('error', 'Brak powiązanego klienta.');
+        }
+    
+        // Pobranie posortowanych rezerwacji użytkownika
+        $bookings = Sorted_Booking::where('customer_id', $customer->customer_id)->get();
+    
+        return view('customer_panel.index', compact('customer', 'bookings'));
+    }
+    
 
 
 

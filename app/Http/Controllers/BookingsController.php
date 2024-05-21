@@ -6,20 +6,24 @@ use Illuminate\Http\Request;
 use App\Models\Trip;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\Sorted_Booking;
 
 class BookingsController extends Controller
 {
-    public function Uindex()
+    public function index()
     {
         $user = Auth::user();
-        $bookings = $user->customer->bookings;
-        dd($bookings);
+
+        // Pobranie posortowanych rezerwacji użytkownika
+        $bookings = Sorted_Booking::where('customer_id', $user->customer->customer_id)->get();
+
         return view('customer_panel.index', compact('bookings'));
     }
+
     
 
     // Metoda do wyświetlania wszystkich rezerwacji dla administratora
-    public function index()
+    public function aindex()
     {
         $bookings = Booking::all();
         return view('bookings.index', compact('bookings'));
