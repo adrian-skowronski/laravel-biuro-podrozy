@@ -8,7 +8,7 @@ use App\Http\Controllers\BookingsController;
 use App\Models\Booking;
 use App\Models\SortedBookingAsc;
 use App\Models\SortedBookingDesc;
-use App\Models\Sorted_Booking;
+
 
 class CustomerPanelController extends Controller
 {

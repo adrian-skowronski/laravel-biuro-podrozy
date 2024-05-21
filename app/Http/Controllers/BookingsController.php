@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Trip;
 use App\Models\Customer; // Dodaj import modelu Customer
 use Illuminate\Support\Facades\DB;
-use App\Models\Sorted_Booking;
 
 class BookingsController extends Controller
 {
@@ -15,21 +14,6 @@ class BookingsController extends Controller
         $customer = auth()->user(); // Zalogowany klient
         $bookings = $customer->bookings; // Zakładając, że relacja jest poprawnie zdefiniowana w modelu Customer
         return view('customer_panel.index', compact('bookings'));
-    }
-
-    
-
-    // Metoda do wyświetlania wszystkich rezerwacji dla administratora
-    public function aindex()
-    {
-        $bookings = Booking::all();
-        return view('bookings.index', compact('bookings'));
-    }
-
-    public function create()
-    {
-        $trips = Trip::all();
-        return view('bookings.create', compact('trips'));
     }
 
     public function store(Request $request)

@@ -16,7 +16,7 @@ use App\Http\Controllers\QueryController;
 use App\Http\Controllers\CustomerPanelController;
 use App\Http\Controllers\TripsHillsController;
 use App\Http\Controllers\BlogController;
-use App\Http\Controllers\TripStatusViewController;
+
 
 
 Route::get('/', [StartController::class, 'index'])->name('start.index');
