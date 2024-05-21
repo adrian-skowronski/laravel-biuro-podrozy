@@ -13,7 +13,7 @@ $tables = ['trips', 'hills', 'trips_hills','record_holders','coordinators','blog
 <body>
 
 @include('shared.navbar')
-
+<br><br>
 <section id="oferta">
     <div class="container">
       <br>

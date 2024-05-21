@@ -41,13 +41,14 @@
   color: #FAFDFF; 
   text-align: center;
   font-weight: bold;
+  text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
 }
 
     .footer {
       background-color: #343a40;
       color: white;
       text-align: center;
-      position: fixed;
+      position: absolute;
       bottom: 0;
       width: 100%;
       z-index: 9999;
