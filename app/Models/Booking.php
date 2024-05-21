@@ -12,7 +12,7 @@ class Booking extends Model
 
     protected $primaryKey = 'booking_id';
 
-    protected $fillable = ['customer_id', 'trip_id', 'participants', 'price', 'status', 'created_at', 'updated_at'];
+    protected $fillable = ['customer_id', 'trip_id', 'participants', 'price', 'created_at', 'updated_at'];
 
     public $timestamps = true; // Użyj true, jeśli chcesz, aby Laravel automatycznie zarządzał created_at i updated_at
 
