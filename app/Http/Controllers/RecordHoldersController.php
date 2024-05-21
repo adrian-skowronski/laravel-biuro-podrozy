@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Record_holder;
+use App\Models\Record_Holder;
 use Illuminate\Http\Request;
 
 class RecordHoldersController extends Controller
@@ -35,7 +35,7 @@ class RecordHoldersController extends Controller
             'country' => 'required|string|max:30',
         ]);
 
-        Record_holder::create($validatedData);
+        Record_Holder::create($validatedData);
 
         return redirect()->route('record_holders.index');
     }
@@ -43,41 +43,40 @@ class RecordHoldersController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Record_holder $recordHolder)
+    public function show(Record_Holder $record_holder)
     {
-        return view('record_holders.show', ['recordHolder' => $recordHolder]);
+        return view('record_holders.show', ['recordHolder' => $record_holder]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Record_holder $recordHolder)
-    {
-        return view('record_holders.edit', ['recordHolder' => $recordHolder]);
-    }
-
+    public function edit(Record_Holder $record_holder)
+{
+    return view('record_holders.edit', ['recordHolder' => $record_holder]);
+}
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Record_holder $recordHolder)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:30',
-            'surname' => 'required|string|max:40',
-            'country' => 'required|string|max:30',
-        ]);
+    public function update(Request $request, Record_Holder $recordHolder)
+{
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:30',
+        'surname' => 'required|string|max:40',
+        'country' => 'required|string|max:30',
+    ]);
 
-        $recordHolder->update($validatedData);
+    $recordHolder->update($validatedData);
 
-        return redirect()->route('record_holders.index');
-    }
+    return redirect()->route('record_holders.index');
+}
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Record_holder $recordHolder)
-    {
-        $recordHolder->delete();
-        return redirect()->route('record_holders.index');
-    }
+    public function destroy(Record_Holder $recordHolder)
+{
+    $recordHolder->delete();
+    return redirect()->route('record_holders.index');
+}
 }
