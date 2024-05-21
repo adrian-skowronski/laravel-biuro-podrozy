@@ -12,7 +12,7 @@ class CreateRecordHoldersTable extends Migration
     public function up(): void
     {
         Schema::create('record_holders', function (Blueprint $table) {
-            $table->id('record_holder_id');
+            $table->id('record_holder_id')->primary();
             $table->string('name', 30);
             $table->string('surname', 40);
             $table->string('country', 30);
