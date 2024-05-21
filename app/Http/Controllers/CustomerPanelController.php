@@ -14,7 +14,7 @@ class CustomerPanelController extends Controller
 {
     public function index(Request $request)
     {
-        $customer = Auth::user();
+        $customer  = Auth::user();
 
         if (!$customer) {
             return redirect()->route('/')->with('error', 'Brak powiązanego klienta.');
