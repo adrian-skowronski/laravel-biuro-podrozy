@@ -17,7 +17,7 @@ class CustomerPanelController extends Controller
         $customer = Auth::user();
 
         if (!$customer) {
-            return redirect()->route('home')->with('error', 'Brak powiązanego klienta.');
+            return redirect()->route('/')->with('error', 'Brak powiązanego klienta.');
         }
 
         $sortOrder = $request->input('sort', 'asc'); // Domyślnie sortuj rosnąco
