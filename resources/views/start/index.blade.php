@@ -24,24 +24,24 @@
     }
         
     /* hero-image, czyli "zdjęcie w tle" */
-    .hero-image {
-      background-image: url('hero-image-2.jpg');
-      background-size: cover;
-      background-position: center;
-      height: 500px; 
-      opacity: 0.9; /*przezroczystość */
-      position: relative;
-    }
-      
-    .hero-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      text-align: center;
-      font-weight: bold;
-    }
+.hero-image {
+  background-image: url('hero-image-2.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 500px; 
+  opacity: 0.7; 
+  position: relative;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #FAFDFF; 
+  text-align: center;
+  font-weight: bold;
+}
 
     .footer {
       background-color: #343a40;
@@ -65,8 +65,8 @@
             <div class="hero-image">
               <div class="hero-text">
                 <h1><b>Gotowy na niezapomniane przeżycia?</b></h1>
-                <p>Wyruszmy na skocznie narciarskie świata!</p>
-                <a href="#oferta" class="btn btn-primary">Jedziemy!</a>
+                <p><b>Wyruszmy na skocznie narciarskie świata!</b></p>
+                <a href="#oferta" class="btn btn-primary"><b>Jedziemy!</b></a>
               </div>
             </div>
           </div>

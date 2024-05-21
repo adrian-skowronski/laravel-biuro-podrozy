@@ -17,7 +17,7 @@
                     <label for="trip_id">Wybierz wycieczkę:</label>
                     <select class="form-control" id="trip_id" name="trip_id">
                         @foreach ($trips as $trip)
-                            <option value="{{ $trip->id }}" {{ $trip->id == $trip_hill->trip_id ? 'selected' : '' }}>{{ $trip->title }}</option>
+                            <option value="{{ $trip->trip_id }}" {{ $trip->trip_id == $trip_hill->trip_id ? 'selected' : '' }}>{{ $trip->title }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -25,7 +25,7 @@
                     <label for="hill_id">Wybierz skocznię:</label>
                     <select class="form-control" id="hill_id" name="hill_id">
                         @foreach ($hills as $hill)
-                            <option value="{{ $hill->id }}" {{ $hill->id == $trip_hill->hill_id ? 'selected' : '' }}>{{ $hill->name }}</option>
+                            <option value="{{ $hill->hill_id }}" {{ $hill->hill_id == $trip_hill->hill_id ? 'selected' : '' }}>{{ $hill->name }}</option>
                         @endforeach
                     </select>
                 </div>

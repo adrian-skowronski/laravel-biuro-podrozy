@@ -8,10 +8,10 @@
     }
 
     .navbar-brand,
-    .navbar-nav {
+    .navbar-nav .nav-link {
       color: white !important; 
     }
-    </style>
+</style>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">

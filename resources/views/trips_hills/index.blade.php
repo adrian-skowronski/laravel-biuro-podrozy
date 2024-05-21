@@ -7,6 +7,7 @@
 
     <div class="container mt-5 mb-5">
         <div class="row mb-1">
+            <br>
             <h1>Lista wycieczek i skoczni</h1>
         </div>
         <div class="row mb-2">

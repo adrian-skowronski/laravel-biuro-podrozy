@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 
 //LISTA NAZW TABEL
-$tables = ['trips', 'hills', 'trips_hills','record_holders','coordinators','blog_posts','customers'];
+$tables = ['trips', 'hills', 'trips_hills','record_holders','coordinators','blog_posts','customers', 'queries'];
 
 ?>
 

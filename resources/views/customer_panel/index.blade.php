@@ -22,11 +22,7 @@
             <h1>Dane Klienta</h1>
         </div>
 
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+
 
         <div class="row">
             <table class="table table-hover table-striped">
