@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateRecordHoldersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('record_holders', function (Blueprint $table) {
-            $table->id('record_holder_id')->primary();
+            $table->id('record_holder_id');
             $table->string('name', 30);
             $table->string('surname', 40);
             $table->string('country', 30);
@@ -26,4 +26,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('record_holders');
     }
-};
+}
