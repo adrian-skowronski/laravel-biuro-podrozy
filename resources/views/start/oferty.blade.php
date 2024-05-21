@@ -9,7 +9,7 @@
       <h1>Nasza oferta</h1>
       <br>
       <div class="row row-cols-1 row-cols-md-4 g-4">
-        @foreach($TripStatusViews as $trip)
+        @foreach($trips as $trip)
           <div class="col">
             <div class="card h-100">
               <img src="{{ asset('photo/'.$trip->photo) }}" class="card-img-top" alt="{{ $trip->description }}">
@@ -20,7 +20,7 @@
                 <span class="badge bg-warning">Ostatnia szansa</span>
               @else
           <span class="badge bg-success">Aktualna</span>
-            @endif
+              @endif
 
                 <h5 class="card-title">{{ $trip->title }}</h5>
                 <p class="card-text">{{ $trip->description }}</p>
