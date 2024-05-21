@@ -52,6 +52,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($customer);
 
-        return redirect()->route('/');
+        return redirect()->route('start');
     }
 }

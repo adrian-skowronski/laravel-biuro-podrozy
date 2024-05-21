@@ -1,6 +1,9 @@
 @include('shared.html')
 @include('shared.head', ['pageTitle' => 'Blog - nowy wpis'])
+@include('shared.navbar')
 <div class="container">
+    
+    <br><br><br>
     <h1>Utwórz nowy wpis na blogu</h1>
 
     <form method="POST" action="{{ route('blog.store') }}" enctype="multipart/form-data">
@@ -20,3 +23,5 @@
         <button type="submit" class="btn btn-primary">Utwórz</button>
     </form>
 </div>
+<br><br>
+@include('shared.footer')

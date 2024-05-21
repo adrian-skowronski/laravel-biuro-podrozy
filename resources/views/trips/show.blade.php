@@ -33,7 +33,7 @@
 </div>
 <br>
 <div class="container text-center">
-    <a href="{{ route('trips.book', $trip) }}" class="btn btn-secondary mt-3">Zarezerwuj wycieczkę!</a>
+    <a href="{{ route('trips.book', $trip) }}" class="btn btn-primary mt-3">Zarezerwuj wycieczkę!</a>
 </div>
 
 <div class="container text-center">

@@ -13,7 +13,7 @@ class Trip_Hill extends Model
 
     protected $table = 'trips_hills';
 
-    protected $primaryKey = 'trip_hill_id';
+    protected $primaryKey = 'id';
 
     protected $fillable = ['trip_id', 'hill_id'];
     public $timestamps = false;
@@ -28,3 +28,4 @@ class Trip_Hill extends Model
         return $this->belongsTo(Hill::class, 'hill_id');
     }
 }
+
