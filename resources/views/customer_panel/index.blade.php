@@ -84,7 +84,7 @@
             <form action="{{ route('customer') }}" method="GET" class="mb-3">
     <div class="input-group">
         <label for="sort" class="input-group-text">Sortuj według ceny:</label>
-        <select name="sort" id="sort" class="form-select" style="max-width: 130px;">
+        <select name="sort" id="sort" class="form-select" style="max-width: 120px;">
             <option value="asc" {{ request('sort') == 'asc' ? 'selected' : '' }}>Rosnąco</option>
             <option value="desc" {{ request('sort') == 'desc' ? 'selected' : '' }}>Malejąco</option>
         </select>
