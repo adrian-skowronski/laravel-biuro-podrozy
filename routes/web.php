@@ -19,7 +19,6 @@ use App\Http\Controllers\BlogController;
 
 
 
-
 Route::get('/', [StartController::class, 'index'])->name('start.index');
 
 Route::get('/oferty', [StartController::class, 'oferty'])->name('start.oferty');
@@ -52,6 +51,15 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::resource('trips_hills', TripsHillsController::class);
     Route::resource('blog_posts', BlogController::class);
 
+    // Dodajemy zasoby dla bookings dla administratora
+    Route::get('/admin/bookings', [BookingsController::class, 'adminIndex'])->name('admin.bookings.index');
+    Route::get('/admin/bookings/create', [BookingsController::class, 'create'])->name('admin.bookings.create');
+    Route::post('/admin/bookings', [BookingsController::class, 'adminStore'])->name('admin.bookings.store');
+    Route::get('/admin/bookings/{booking}/edit', [BookingsController::class, 'edit'])->name('admin.bookings.edit');
+    Route::put('/admin/bookings/{booking}', [BookingsController::class, 'update'])->name('admin.bookings.update');
+    Route::delete('/admin/bookings/{booking}', [BookingsController::class, 'destroy'])->name('admin.bookings.destroy');
+    
+
     
 
     Route::get('/admin', function () {
@@ -77,15 +85,16 @@ Route::get('/trips/{trip}', [TripsController::class, 'show'])->name('trips.show'
 
 
 
-Route::middleware('auth')->group(function () {
+route::middleware('auth')->group(function () {
     Route::get('blog/create', [BlogController::class, 'create'])->name('blog.create');
     Route::post('blog', [BlogController::class, 'store'])->name('blog.store');
     Route::get('/klient', [CustomerPanelController::class, 'index'])->name('customer');
     Route::get('/klient/add_money', [CustomerPanelController::class, 'addMoney'])->name('customer.add_money');
     Route::post('/klient/add_money', [CustomerPanelController::class, 'addMoneySubmit'])->name('customer.add_money.submit');
 
+    Route::get('/klient/bookings', [BookingsController::class, 'index'])->name('customer.bookings.index');
+    Route::post('/trips/{trip}/booking/submit', [BookingsController::class, 'store'])->name('trips.booking.submit');
 });
-
 
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
