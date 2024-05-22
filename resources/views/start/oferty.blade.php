@@ -14,11 +14,14 @@
             <div class="card h-100">
               <img src="{{ asset('photo/'.$trip->photo) }}" class="card-img-top" alt="{{ $trip->description }}">
               <div class="card-body">
-                @if($trip->status == 'archiwalna')
-                  <span class="badge bg-danger">Archiwalna</span>
-                @else
-                  <span class="badge bg-success">Aktualna</span>
-                @endif
+              @if($trip->status == 'archiwalna')
+                <span class="badge bg-danger">Archiwalna</span>
+              @elseif($trip->status == 'Ostatnia szansa')
+                <span class="badge bg-warning">Ostatnia szansa</span>
+              @else
+          <span class="badge bg-success">Aktualna</span>
+              @endif
+
                 <h5 class="card-title">{{ $trip->title }}</h5>
                 <p class="card-text">{{ $trip->description }}</p>
                 <p class="card-text">Data: {{ $trip->start }} - {{ $trip->end }}</p>
