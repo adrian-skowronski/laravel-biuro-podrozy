@@ -1,3 +1,12 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+
+//LISTA NAZW TABEL
+$tables = ['trips', 'hills', 'trips_hills','record_holders','coordinators','blog_posts','customers', 'queries',];
+
+?>
+
 @include('shared.html')
 @include('shared.head', ['pageTitle' => 'Panel admina'])
 
