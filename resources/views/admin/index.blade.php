@@ -1,17 +1,7 @@
-<?php
-
-use Illuminate\Support\Facades\Schema;
-
-//LISTA NAZW TABEL
-$tables = ['trips', 'hills', 'trips_hills','record_holders','coordinators','blog_posts','customers', 'queries'];
-
-?>
-
 @include('shared.html')
 @include('shared.head', ['pageTitle' => 'Panel admina'])
 
 <body>
-
 @include('shared.navbar')
 <br><br>
 <section id="oferta">
@@ -37,9 +27,28 @@ $tables = ['trips', 'hills', 'trips_hills','record_holders','coordinators','blog
                 @endforeach
             </tbody>
         </table>
+        <br><br>
+        <h2>Statystyki rezerwacji wycieczek</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nazwa wycieczki</th>
+                    <th>Liczba rezerwacji</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($statistics as $stat)
+                <tr>
+                    <td>{{ $stat['trip']->title }}</td>
+                    <td>{{ $stat['booking_count'] }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </section>
 <br>
 <br>
 @include('shared.footer')
 </body>
+</html>

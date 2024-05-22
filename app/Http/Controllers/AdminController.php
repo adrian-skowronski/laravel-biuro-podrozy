@@ -4,15 +4,29 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Trip;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        // Lista nazw tabel
-        $tables = ['trips', 'hills'];
+        $tables = ['trips', 'hills', 'trips_hills','record_holders','coordinators','blog_posts','customers', 'queries'];
 
-        return view('admin.index', compact('tables'));
+        $trips = Trip::all();
+        $statistics = [];
+
+        foreach ($trips as $trip) {
+            $tripId = $trip->trip_id;
+            DB::statement('CALL count_bookings_with_cursor(?, @count)', [$tripId]);
+            $result = DB::select('SELECT @count as booking_count');
+
+            $statistics[] = [
+                'trip' => $trip,
+                'booking_count' => $result[0]->booking_count
+            ];
+        }
+
+        return view('admin.index', compact('tables', 'statistics'));
     }
 
     public function showTable($table)
@@ -29,4 +43,3 @@ class AdminController extends Controller
         return view('admin.table', compact('table', 'records'));
     }
 }
-
