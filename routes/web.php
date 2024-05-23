@@ -59,6 +59,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/bookings/{booking}/edit', [BookingsController::class, 'edit'])->name('admin.bookings.edit');
     Route::put('/admin/bookings/{booking}', [BookingsController::class, 'update'])->name('admin.bookings.update');
     Route::delete('/admin/bookings/{booking}', [BookingsController::class, 'destroy'])->name('admin.bookings.destroy');
+    Route::get('/admin/customers-ranking', [AdminController::class, 'showCustomersRanking'])->name('admin.customers-ranking');
     
 
     
@@ -77,6 +78,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
             abort(404);
         }
     })->name('admin.table');
+
 });
 
 Route::post('/submit-query', [QueryController::class, 'store'])->name('queries.store');
