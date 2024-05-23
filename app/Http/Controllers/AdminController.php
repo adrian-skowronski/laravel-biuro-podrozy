@@ -25,8 +25,8 @@ class AdminController extends Controller
                 'booking_count' => $result[0]->booking_count
             ];
         }
-
-        return view('admin.index', compact('tables', 'statistics'));
+        $customersRanking = DB::select('CALL GetCustomerRanking()');
+        return view('admin.index', compact('tables', 'statistics','customersRanking'));
     }
 
     public function showTable($table)
