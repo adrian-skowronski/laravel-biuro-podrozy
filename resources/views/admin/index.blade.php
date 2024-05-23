@@ -59,6 +59,7 @@ $tables = ['trips', 'hills', 'trips_hills','record_holders','coordinators','blog
     <table class="table">
         <thead>
             <tr>
+                <th>Ranking</th>
                 <th>Id klienta</th>
                 <th>Imię</th>
                 <th>Nazwisko</th>
@@ -66,8 +67,9 @@ $tables = ['trips', 'hills', 'trips_hills','record_holders','coordinators','blog
             </tr>
         </thead>
         <tbody>
-            @foreach($customersRanking as $customer)
-            <tr>
+        @foreach($customersRanking as $key => $customer)
+        <tr>
+            <td>{{ $key + 1 }}</td>
                 <td>{{ isset($customer->customer_id) ? $customer->customer_id : 'Brak danych' }}</td>
                 <td>{{ isset($customer->imie) ? $customer->imie : 'Brak danych' }}</td>
                 <td>{{ isset($customer->nazwisko) ? $customer->nazwisko : 'Brak danych' }}</td>
