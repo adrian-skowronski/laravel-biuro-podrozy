@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Trip;
-use App\Models\Customer; // Dodaj import modelu Customer
+use App\Models\Customer;
 use Illuminate\Support\Facades\DB;
 
 class BookingsController extends Controller

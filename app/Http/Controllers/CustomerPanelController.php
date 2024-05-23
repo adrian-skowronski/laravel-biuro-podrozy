@@ -8,17 +8,24 @@ use App\Http\Controllers\BookingsController;
 use App\Models\Booking;
 use App\Models\SortedBookingAsc;
 use App\Models\SortedBookingDesc;
+use Illuminate\Support\Facades\DB;
+
 
 
 class CustomerPanelController extends Controller
 {
     public function index(Request $request)
     {
-        $customer  = Auth::user();
+        $customer = Auth::user();
 
         if (!$customer) {
             return redirect()->route('/')->with('error', 'Brak powiązanego klienta.');
         }
+
+        // WYWOŁANIE PROCEDURY
+        DB::statement('CALL calculate_days_to_next_trip(?, @days_left, @message)', [$customer->customer_id]);
+        $result = DB::select('SELECT @days_left as days_left, @message as message');
+        $daysLeft = $result[0]->days_left ?? null;
 
         $sortOrder = $request->input('sort', 'asc'); // Domyślnie sortuj rosnąco
 
@@ -28,7 +35,7 @@ class CustomerPanelController extends Controller
             $bookings = SortedBookingDesc::where('customer_id', $customer->customer_id)->get();
         }
 
-        return view('customer_panel.index', compact('customer', 'bookings'));
+        return view('customer_panel.index', compact('customer', 'daysLeft', 'bookings'));
     }
     
 
@@ -59,4 +66,6 @@ class CustomerPanelController extends Controller
 
         return redirect()->route('customer')->with('success', 'Saldo zostało doładowane.');
     }
+
+    
 }

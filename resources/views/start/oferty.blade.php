@@ -18,6 +18,9 @@
                 <span class="badge bg-danger">Archiwalna</span>
               @elseif($trip->status == 'Ostatnia szansa')
                 <span class="badge bg-warning">Ostatnia szansa</span>
+                @elseif($trip->status == 'koniec zapisów')
+                <span class="badge bg-danger">Koniec zapisów</span>
+
               @else
           <span class="badge bg-success">Aktualna</span>
               @endif

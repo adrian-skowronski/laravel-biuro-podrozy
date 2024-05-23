@@ -33,7 +33,11 @@
 </div>
 <br>
 <div class="container text-center">
+    @if($trip->status == "aktualna" or $trip->status == "Ostatnia szansa")
     <a href="{{ route('trips.book', $trip) }}" class="btn btn-primary mt-3">Zarezerwuj wycieczkę!</a>
+    @else
+    <p><i>Koniec zapisów na wycieczkę</i></p>
+    @endif
 </div>
 
 <div class="container text-center">

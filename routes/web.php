@@ -16,6 +16,7 @@ use App\Http\Controllers\QueryController;
 use App\Http\Controllers\CustomerPanelController;
 use App\Http\Controllers\TripsHillsController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\AdminController;
 
 
 
@@ -62,9 +63,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
 
     
 
-    Route::get('/admin', function () {
-        return view('admin.index');
-    })->name('admin');
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
    
 
