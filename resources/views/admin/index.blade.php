@@ -54,6 +54,7 @@ $tables = ['trips', 'hills', 'trips_hills','record_holders','coordinators','blog
                 @endforeach
             </tbody>
         </table>
+        <br><br>
         <h2>Ranking wydanych pieniędzy przez klientów</h2>
         @if(isset($customersRanking) && count($customersRanking) > 0)
     <table class="table">
