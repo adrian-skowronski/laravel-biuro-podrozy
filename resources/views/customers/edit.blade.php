@@ -2,7 +2,7 @@
 
 @include('shared.head', ['pageTitle' => 'Edytuj klienta'])
 
-<body>
+<<body>
     @include('shared.navbar')
 
     <div class="container mt-5 mb-5">
@@ -12,27 +12,52 @@
             @method('PATCH')
             <div class="mb-3">
                 <label for="name" class="form-label">Imię</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ $customer->name }}" required>
+                <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $customer->name) }}" required>
+                @error('name')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="surname" class="form-label">Nazwisko</label>
-                <input type="text" class="form-control" id="surname" name="surname" value="{{ $customer->surname }}" required>
+                <input type="text" class="form-control" id="surname" name="surname" value="{{ old('surname', $customer->surname) }}" required>
+                @error('surname')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="phone" class="form-label">Telefon</label>
-                <input type="text" class="form-control" id="phone" name="phone" value="{{ $customer->phone }}" required>
+                <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone', $customer->phone) }}" required>
+                @error('phone')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="email" name="email" value="{{ $customer->email }}" required>
+                <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $customer->email) }}" required>
+                @error('email')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Nowe hasło</label>
                 <input type="password" class="form-control" id="password" name="password">
+                @error('password')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mb-3">
+                <label for="password_confirmation" class="form-label">Potwierdź nowe hasło</label>
+                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+                @error('password')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="code" class="form-label">Kod</label>
-                <input type="text" class="form-control" id="code" name="code" value="{{ $customer->code }}" required>
+                <input type="text" class="form-control" id="code" name="code" value="{{ old('code', $customer->code) }}" required>
+                @error('code')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
             <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
         </form>
