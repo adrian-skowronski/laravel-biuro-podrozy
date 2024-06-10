@@ -37,50 +37,7 @@ $tables = ['trips', 'hills', 'trips_hills','record_holders','coordinators','blog
             </tbody>
         </table>
         <br><br>
-        <h2>Statystyki rezerwacji wycieczek</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Nazwa wycieczki</th>
-                    <th>Liczba rezerwacji</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($statistics as $stat)
-                <tr>
-                    <td>{{ $stat['trip']->title }}</td>
-                    <td>{{ $stat['booking_count'] }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <h2>Ranking wydanych pieniędzy przez klientów</h2>
-        @if(isset($customersRanking) && count($customersRanking) > 0)
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Ranking</th>
-                <th>Id klienta</th>
-                <th>Imię</th>
-                <th>Nazwisko</th>
-                <th>Suma wydanych pieniędzy</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($customersRanking as $key => $customer)
-        <tr>
-            <td>{{ $key + 1 }}</td>
-                <td>{{ isset($customer->customer_id) ? $customer->customer_id : 'Brak danych' }}</td>
-                <td>{{ isset($customer->imie) ? $customer->imie : 'Brak danych' }}</td>
-                <td>{{ isset($customer->nazwisko) ? $customer->nazwisko : 'Brak danych' }}</td>
-                <td>{{ isset($customer->suma_wydanych_pieniedzy) ? $customer->suma_wydanych_pieniedzy : 'Brak danych' }}</td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-@else
-    <p>Brak danych do wyświetlenia.</p>
-@endif
+       
         
     </div>
 </section>

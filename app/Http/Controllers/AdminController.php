@@ -12,21 +12,8 @@ class AdminController extends Controller
     {
         $tables = ['trips', 'hills', 'trips_hills','record_holders','coordinators','blog_posts','customers', 'queries'];
 
-        $trips = Trip::all();
-        $statistics = [];
-
-        foreach ($trips as $trip) {
-            $tripId = $trip->trip_id;
-            DB::statement('CALL count_bookings_with_cursor(?, @count)', [$tripId]);
-            $result = DB::select('SELECT @count as booking_count');
-
-            $statistics[] = [
-                'trip' => $trip,
-                'booking_count' => $result[0]->booking_count
-            ];
-        }
-        $customersRanking = DB::select('CALL GetCustomerRanking()');
-        return view('admin.index', compact('tables', 'statistics','customersRanking'));
+        
+        return view('admin.index', compact('tables',));
     }
 
     public function showTable($table)
